@@ -1,7 +1,5 @@
 .vs/
 .vscode/
-eluCloud.Client/bin/
-eluCloud.Client/obj/
 */bin/**/*
 */obj/**/*
 packages/
