@@ -1,7 +1,9 @@
 ﻿using elusoft.eluCloud.Client.Model;
 using elusoft.eluCloud.Client.ServerPushes;
 using ServiceStack;
+using ServiceStack.DataAnnotations;
 using System.Net;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -16,11 +18,11 @@ public sealed class Client
     private string apiKey;
     private CancellationToken token;
 
-    public string? SessionId 
-    { 
-        get => jsonClient.SessionId; 
-        private set 
-        { 
+    public string? SessionId
+    {
+        get => jsonClient.SessionId;
+        private set
+        {
             jsonClient.SessionId = value;
             if (null == value)
             {
@@ -30,7 +32,7 @@ public sealed class Client
             {
                 jsonClient.AddHeader("X-ss-id", value);
             }
-        } 
+        }
     }
     public string? SignalRConnectionId => signalRHub?.ConnectionId;
     public string? ApiVersion { get; private set; }
@@ -158,4 +160,7 @@ public sealed class Client
             handlerWrapper.RegisterToClient(signalRHub);
         }
     }
+
+    public void On<T>(Action<T> handler) =>
+        On(typeof(T).GetCustomAttribute<AliasAttribute>()?.Name ?? typeof(T).Name.ToCamelCase(), handler);
 }

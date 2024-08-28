@@ -11,23 +11,23 @@ Client client = new(
     apiKey);
 
 // SignalR: can be registered before authentication
-client.On<Dummy>("dummy", o => Console.WriteLine("Dummy!" + o.Timestamp + o.Message));
+client.On<Test>(o => Console.WriteLine("Test! " + o.Timestamp + o.Message));
 
 // You can provide a SessionId here from previous connection.
 // If no SessionId provided, this will trigger the authentication flow.
 await client.ConnectAsync();
 
 // SignalR: Or after authentication
-client.On<Dummy>("dummy", _ => Console.WriteLine("Dummy again!"));
+client.On<Test>(o => Console.WriteLine("Test again!"));
 
 Console.WriteLine($"Connected to the server (v{client.ApiVersion}).");
 Console.WriteLine($"Session ID: {client.SessionId}");
 Console.WriteLine($"SignalR Connection ID: {client.SignalRConnectionId}");
-Console.ReadKey();
+Console.Read();
 
 
 // registering to partEnd event
-client.On<PartEnd>("partEnd", o =>
+client.On<PartEnd>(o =>
 {
     o.Parts?.ForEach(async x =>
     {

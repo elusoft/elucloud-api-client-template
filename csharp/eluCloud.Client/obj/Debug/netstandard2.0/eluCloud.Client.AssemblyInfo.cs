@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("eluCloud.Client")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06d6edf14dbed2f6773d2ada8d43100308c2ec82")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf72675bdacf80e7248cb26e4a4601e262776685")]
 [assembly: System.Reflection.AssemblyProductAttribute("eluCloud.Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("eluCloud.Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
